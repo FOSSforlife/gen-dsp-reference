@@ -8,6 +8,10 @@ import {
   TableRow,
 } from './components/ui/table';
 
+// TODO: React query to retrieve jsonl data
+// TODO: Markdown link parsing
+// TODO: Handle aliases in component
+
 function App() {
   return (
     <>
