@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import './App.css';
 import { Item } from './components/Item';
 import {
@@ -7,26 +8,32 @@ import {
   TableHeader,
   TableRow,
 } from './components/ui/table';
+import { getData } from './services/getData';
 
-// TODO: React query to retrieve jsonl data
 // TODO: Markdown link parsing
-// TODO: Handle aliases in component
 
 function App() {
+  const { data, isLoading } = useQuery({
+    queryKey: ['operators'],
+    queryFn: getData,
+  });
+  if (isLoading || data === undefined) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-      <Table>
+      <Table className="text-left">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Category</TableHead>
+            <TableHead>Category</TableHead>
             <TableHead>Operator</TableHead>
             <TableHead>Description</TableHead>
-            <TableHead className="text-right">Compatibility </TableHead>
+            <TableHead>Domain</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {['abc', 'def'].map(() => (
-            <Item></Item>
+          {data.map((operator) => (
+            <Item key={operator.category} operator={operator} />
           ))}
         </TableBody>
       </Table>

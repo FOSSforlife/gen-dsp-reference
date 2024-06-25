@@ -10,7 +10,7 @@ export function Item({ operator }: ItemProps) {
       <TableCell>{operator.category}</TableCell>
       <TableCell>{operator.aliases.join(', ')}</TableCell>
       <TableCell>{operator.description}</TableCell>
-      <TableCell>{operator.compatibility}</TableCell>
+      <TableCell>{operator.domain}</TableCell>
     </TableRow>
   );
 }
