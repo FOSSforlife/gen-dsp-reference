@@ -10,8 +10,6 @@ import {
 } from './components/ui/table';
 import { getData } from './services/getData';
 
-// TODO: Markdown link parsing
-
 function App() {
   const { data, isLoading } = useQuery({
     queryKey: ['operators'],
